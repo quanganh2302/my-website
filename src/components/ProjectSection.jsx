@@ -98,7 +98,7 @@ const projects = [
       "Full-featured clone of the Hanoi University of Science and Technology’s TSA competency assessment website.",
     image: "/projects/tsa_clone.gif",
     tags: ["React", "HTML", "CSS", "Ant design", "Javascript", "FireBase"],
-    demoUrl: "#",
+    demoUrl: "https://tsa-test.vercel.app/dang-nhap",
     githubUrl: "https://github.com/quanganh2302/tsa-test",
   },
   {

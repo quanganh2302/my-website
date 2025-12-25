@@ -2,7 +2,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-import { light } from "./light";
+import { light } from "@/three/light";
 import { loadTown } from "./loadTown";
 import { loadCharacter } from "./loadCharacter";
 import { createResizeHandler } from "./resize";
@@ -10,8 +10,8 @@ import { createResizeHandler } from "./resize";
 import { KeyDisplay } from "./utils";
 import { CharacterControls } from "./characterControls";
 
-import townUrl from "../assets/3d/portfolio.glb?url";
-import redUrl from "../assets/3d/Red.glb?url";
+import townUrl from "@/assets/3d/portfolio.glb?url";
+import redUrl from "@/assets/3d/Red.glb?url";
 
 import {
   setupPrefixInteractions,
