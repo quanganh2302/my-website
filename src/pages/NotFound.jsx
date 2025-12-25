@@ -48,7 +48,7 @@ const NotFound = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button
-            onClick={() => (window.location.href = "/portfolio")}
+            onClick={() => (window.location.href = "/")}
             className="cosmic-button flex items-center justify-center gap-2 cursor-pointer"
           >
             ComeBack Home

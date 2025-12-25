@@ -57,7 +57,7 @@ const projects = [
       "A personal website that integrates Three.js to enhance user experience by enabling interactive control 3D models directly in the web environment.",
     image: "/projects/pallettown.png",
     tags: ["React", "Threejs", "TailwindCSS", "Blender"],
-    demoUrl: "/",
+    demoUrl: "/pallettown",
     githubUrl: "#",
   },
   {
