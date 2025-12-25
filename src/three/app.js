@@ -11,7 +11,7 @@ import { KeyDisplay } from "./utils";
 import { CharacterControls } from "./characterControls";
 
 import townUrl from "@/assets/3d/portfolio.glb?url";
-import redUrl from "@/assets/3d/Red.glb?url";
+import redUrl from "@/assets/3d/red.glb?url";
 
 import {
   setupPrefixInteractions,
