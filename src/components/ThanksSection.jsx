@@ -4,7 +4,7 @@ import React from "react";
 const ThanksSection = () => {
   return (
     <section className="py-2 px-4 ">
-      <div className="container mx-auto max-w-5xl flex justify-between gap-80">
+      <div className="container mx-auto max-w-5xl flex justify-between items-center md:gap-80 gap-0">
         <a
           href="#hero"
           className="p-4 rounded-full border-4 border-primary/10 hover:bg-primary/20 text-primary transition-colors"
