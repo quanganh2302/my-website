@@ -9,7 +9,6 @@ const navItems = [
   { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" },
   { name: "Pallet Town", href: "/pallettown" },
-
 ];
 
 const Navbar = () => {
@@ -17,6 +16,18 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,13 +36,15 @@ const Navbar = () => {
       // Kiểm tra có scroll hay không
       setIsScrolled(currentScrollY > 10);
 
-      // Ẩn/hiện navbar dựa trên hướng scroll
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scroll down - ẩn navbar
-        setIsVisible(false);
-      } else {
-        // Scroll up - hiện navbar
-        setIsVisible(true);
+      // Ẩn/hiện navbar - chỉ áp dụng trên desktop
+      if (!isMobile) {
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scroll down - ẩn navbar
+          setIsVisible(false);
+        } else {
+          // Scroll up - hiện navbar
+          setIsVisible(true);
+        }
       }
 
       setLastScrollY(currentScrollY);
@@ -39,7 +52,7 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isMobile]);
 
   return (
     <nav
@@ -48,7 +61,7 @@ const Navbar = () => {
         isScrolled
           ? "py-3 bg-background/80 backdrop-blur-md shadow-xs"
           : "py-5",
-        isVisible ? "translate-y-0" : "-translate-y-full"
+        !isMobile && !isVisible ? "-translate-y-full" : "translate-y-0"
       )}
     >
       <div className="container flex items-center justify-between">
@@ -88,7 +101,7 @@ const Navbar = () => {
         <div
           className={cn(
             "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
+            "transition-all duration-300 md:hidden h-screen",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
