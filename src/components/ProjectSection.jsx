@@ -4,9 +4,9 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "Point Data Acquisition & Processing",
+    title: "Point Data Acquisition & Intelligent Processing",
     description:
-      "C# desktop application that collects point-by-point data from the high-precision measurement sensor and stitches it into a large dataset, with basic data processing for stable high-speed measurements.",
+      "C# desktop application for high-speed point data acquisition and stitching, applying machine learning for outlier removal, data smoothing, and missing data completion.",
     image: "/projects/PSA.gif",
     tags: ["C#", "WPF", "UX/UI", "Python", "Pytorch", "OpenCV"],
     demoUrl: "#",

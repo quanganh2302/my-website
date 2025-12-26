@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -33,16 +34,12 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Kiểm tra có scroll hay không
       setIsScrolled(currentScrollY > 10);
 
-      // Ẩn/hiện navbar - chỉ áp dụng trên desktop
       if (!isMobile) {
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          // Scroll down - ẩn navbar
           setIsVisible(false);
         } else {
-          // Scroll up - hiện navbar
           setIsVisible(true);
         }
       }
@@ -76,6 +73,7 @@ const Navbar = () => {
         </a>
 
         {/* Desktop nav */}
+
         <div className="hidden md:flex space-x-8">
           {navItems.map((item, key) => (
             <a
@@ -86,16 +84,34 @@ const Navbar = () => {
               {item.name}
             </a>
           ))}
+          <ThemeToggle className={"fixed max-sm:hidden top-2 right-5 z-50 p-2 "} />
         </div>
 
-        {/* Mobile nav button */}
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center justify-between gap-2 md:hidden">
+          {/* <button
+            onClick={toggleTheme}
+            className={cn(
+              "md:hidden rounded-full transision-colors duration-300 ",
+              "focus:outline-hidden"
+            )}
+          >
+            {isDarkMode ? (
+              <Sun className="h-6 w-6 text-[rgb(255,222,172)]" />
+            ) : (
+              <Moon className="h-6 w-6 text-primary" />
+            )}
+          </button> */}
+          <ThemeToggle className={"sm:hidden"} />
+
+          {/* Mobile nav button */}
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="md:hidden p-2 text-foreground z-50"
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
 
         {/* Mobile menu */}
         <div
